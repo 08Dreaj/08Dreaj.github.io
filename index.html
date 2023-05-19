@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fries & Fry-ious' Kiosk</title>
+    <script>
+      function getRandomChoice() {
+        var choices = ['a', 'b', 'c'];
+        return choices[Math.floor(Math.random() * choices.length)];
+      }
+
+      function showMenu() {
+        alert("Welcome to Fries & Fry-ious!");
+
+        var userChoice = prompt("What would you like to order? (select by entering the number corresponding with your choice)\n" +
+          "A. Fry-ious Burger Combo\n" +
+          "B. Fry-rito Bowl\n" +
+          "C. Fry-dog Delight\n" +
+          "D. Want the computer to choose for you (we know you sometimes don't know ;) )?").toLowerCase();
+
+        var fryBurg = 'a', fryRito = 'b', fryDog = 'c', comp = 'd';
+        var compsChoice = 0;
+        var total = 0;
+
+        if (userChoice === comp) {
+          compsChoice = getRandomChoice();
+        }
+
+        if (compsChoice === fryBurg || userChoice === fryBurg) {
+          var drink = prompt("What drink would you like with your meal?\n" +
+            "Sprite\n" +
+            "Coca-Cola\n" +
+            "Fanta\n" +
+            "Pepsi\n" +
+            "Water");
+          total = 40;
+          alert("Here are your items:\nFry-ious Burger Combo + " + drink + "\nTotal: R " + total);
+        } else if (compsChoice === fryRito || userChoice === fryRito) {
+          var protein = prompt("What's your choice of protein?:\n" +
+            "Ground beef\n" +
+            "Grilled Chicken\n" +
+            "Pork");
+          total = 60;
+          alert("Here are your items:\nFry-rito Bowl + " + protein + "\nTotal: R " + total);
+        } else if (compsChoice === fryDog || userChoice === fryDog) {
+          total = 20;
+          alert("Here are your items:\nFry-dog Delight\nTotal: R " + total);
+        } else {
+          alert("Invalid Option");
+          return;
+        }
+
+        var wantDsct = prompt("Do you want a chance at a discount?\nYou'll get 3 automatic rolls and if the number \"1\", " +
+          "you get 20% off whatever you purchased!\nWhat's your answer: yes or no?");
+
+        var pi = Math.floor((Math.PI - 3) * Math.pow(10, 5));
+
+        var dscntChance = 0;
+
+        if (wantDsct.toLowerCase() === "yes") {
+          for (var i = 3; i >= 0; i--) {
+            dscntChance = Math.floor(Math.random() * 100) + 1;
+            if (dscntChance === 1) {
+              alert("YOU GOT THE DISCOUNT!!!!");
+              var dscntedTotal = total - (total * 0.20);
+              total = dscntedTotal;
+              alert("You get to just pay R " + total);
+            }
+            break;
+          }
+        } else {
+          alert("Not feeling lucky today, huh? Understandable :)");
+        }
+
+        var methOfPay = prompt("Here's your total: R " + total + "\nHow would you like to pay?:\nCard\nCash\nCounter");
+
+        var lenName = 0;
+        var name = "";
+
+        switch (methOfPay.toLowerCase()) {
+          case "card":
+            name = prompt("Ok, please enter your card in the card slot (DON'T TYPE IT)\nEnter your name as well: ").toUpperCase();
+            lenName = name.length;
+            break;
+          case "cash":
+            alert("Ok, please place your cash into the slot");
+            break;
+          case "counter":
+            alert("Ok, please go and pay at the counter");
+            break;
+          default:
+            alert("Invalid input");
+            return;
+        }
+
+        if (lenName % 2 === 0 && methOfPay.toLowerCase() === "card") {
+          alert("WOW, your name, " + name + ", is divisible by 2 you get 5-times-your-name more fries for making my code easier!\n" +
+            "this reward is exclusive to those who used a card at the kiosk, so try doing that next time for more fries " +
+            "(your name is saved and checked, so don't try to con us :D)!");
+        }
+
+        alert("Here's your receipt:\nFAST & FRY-IOUS\nTotal: R " + total + "\nWe like to keep things short, fast, " +
+          "and fry-ious ;D. Come again next time!\n\nHere are your 5 digits of Pi after the decimal point " + pi + "!");
+      }
+
+      // Call the showMenu function to start the application
+      showMenu();
+    </script>
+  </head>
+  <body>
+    <!-- You can add HTML content here if needed -->
+  </body>
+</html>
