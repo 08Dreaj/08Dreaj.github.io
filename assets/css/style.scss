@@ -1,0 +1,20 @@
+// Import any additional SCSS files or dependencies here
+@import 'reset'; // Example import statement
+
+// Your custom styles
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  color: #333;
+  font-size: 24px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Add more styles as needed */
